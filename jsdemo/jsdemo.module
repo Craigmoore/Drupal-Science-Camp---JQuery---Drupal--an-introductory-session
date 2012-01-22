@@ -1,0 +1,41 @@
+<?php
+  function jsdemo_block_info() {
+    $blocks['jsdemo'] = array(
+      'info' => t('JSDemo block'),
+    );
+    return $blocks;
+  }
+
+  function jsdemo_block_view($delta = '') {
+    switch($delta) {
+      case 'jsdemo':
+        $block['subject'] = t('Javascript demo');
+        
+          $block['content'] = '<div id="demoDiv"></div>';
+                    
+          $settings = array();
+          $settings['color'] = '#0f0';
+          
+          drupal_add_js($settings, 'setting');
+          drupal_add_js(drupal_get_path('module', 'jsdemo'). '/js/jsdemo.js');
+
+        break;
+    }
+    return $block;
+  }
+  
+function jsdemo_menu() {
+  $items = array();
+    $items['jsdemo/current_time'] = array(
+      'title' => t('What is the current time?'),
+      'page callback' => 'jsdemo_current_time',
+      'access arguments' => array('access content'),
+      'type' => MENU_CALLBACK,
+    );
+  return $items;
+}
+
+function jsdemo_current_time() {
+  header('Content-type: application/json');
+  echo json_encode(date('l jS \of F Y h:i:s A'));
+}  
