@@ -11,13 +11,14 @@
       case 'jsdemo':
         $block['subject'] = t('Javascript demo');
         
-          $block['content'] = '<div id="demoDiv"></div>';
-                    
+          $block['content'] = '<div class="demoDiv"></div>';
+          
+          drupal_add_js(drupal_get_path('module', 'jsdemo'). '/js/jsdemo.js');
+          
           $settings = array();
           $settings['color'] = '#0f0';
           
           drupal_add_js($settings, 'setting');
-          drupal_add_js(drupal_get_path('module', 'jsdemo'). '/js/jsdemo.js');
 
         break;
     }
