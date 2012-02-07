@@ -6,6 +6,12 @@
     return $blocks;
   }
 
+  
+  
+  
+  
+  
+  
   function jsdemo_block_view($delta = '') {
     switch($delta) {
       case 'jsdemo':
@@ -24,6 +30,13 @@
     }
     return $block;
   }
+  
+  
+  
+  
+  
+  
+  
   
 function jsdemo_menu() {
   $items = array();

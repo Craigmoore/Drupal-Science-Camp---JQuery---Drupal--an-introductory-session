@@ -4,10 +4,10 @@
 	// Store our function as a property of Drupal.behaviors.
 	Drupal.behaviors.jsdemo = {
 		attach: function (context, settings) {
-
+			
 			// 2) Context, parameters
 			console.log([context, settings]);
-			
+					
 			// 3) global functions vs objects
 			// 4) selectors
 			// 5) ids vs classes, reusability
@@ -30,12 +30,13 @@
 				//event.stopPropagation();
 				//event.stopImmediatePropagation()
 			});
+			//$demoDivs.trigger('click');
 
 			// 9) Creating using jquery shortcut
-			var currentTime = $("<div />");
+			var $currentTime = $("<div />");
 			// 10) Dom manipulation
-			currentTime.appendTo($demoDivs);
-						
+			$currentTime.appendTo($demoDivs);
+			
 			// 11) Functions as variables
 			var updateTime = function() {
 				
@@ -45,7 +46,7 @@
 					url : 'jsdemo/current_time',
 					success : function(json) {
 						
-						currentTime
+						$currentTime
 							.html(json)
 							// 13) animate and stop
 							.stop()
@@ -59,7 +60,8 @@
 			};
 			
 			updateTime();
-		}
+		},
+		detach: function (context, settings) { }
 	};
 }(jQuery));
 
